@@ -89,14 +89,7 @@ source .venv/bin/activate
 
 python -m pip install -e ".[dev]"
 python -m pytest
-python -m dtt_agent --session-id demo < scenarios/mixed_answers.jsonl
-```
-
-In **PowerShell**, `<` is a reserved operator and does not redirect input. Pipe
-the scenario in instead — this is equivalent everywhere in this document:
-
-```powershell
-Get-Content scenarios\mixed_answers.jsonl | python -m dtt_agent --session-id demo
+python -m dtt_agent --session-id demo --input scenarios/mixed_answers.jsonl
 ```
 
 Python **3.11 or newer**. Runtime code uses the **standard library only**;
@@ -261,12 +254,18 @@ Do not claim the lesson is clinically appropriate for any real child.
 ## 10. Scenarios and the CLI
 
 ```bash
-python -m dtt_agent --session-id demo < scenarios/mixed_answers.jsonl
+python -m dtt_agent --session-id demo --input scenarios/mixed_answers.jsonl
+```
+
+The runner also reads standard input when `--input` is omitted, which is how
+the examples elsewhere in this document are written:
+
+```bash
+python -m dtt_agent --session-id demo < scenarios/mixed_answers.jsonl        # bash, zsh
 ```
 
 ```powershell
-# PowerShell equivalent
-Get-Content scenarios\mixed_answers.jsonl | python -m dtt_agent --session-id demo
+Get-Content scenarios\mixed_answers.jsonl | python -m dtt_agent --session-id demo   # PowerShell has no '<'
 ```
 
 The runner constructs the agent, calls `start_session("demo")`, prints that

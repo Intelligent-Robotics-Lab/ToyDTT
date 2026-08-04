@@ -209,6 +209,33 @@ def test_cli_emits_one_well_formed_line_per_input_line(scenario_name):
         assert_valid_response(json.loads(line))
 
 
+def test_cli_input_flag_matches_stdin(tmp_path):
+    """--input exists for shells without '<'; it must behave identically."""
+    scenario = SCENARIOS / "mixed_answers.jsonl"
+    env = {**_base_env(), "PYTHONPATH": str(SRC_ROOT)}
+
+    from_flag = subprocess.run(
+        [sys.executable, "-m", "dtt_agent", "--session-id", "demo", "--input", str(scenario)],
+        capture_output=True,
+        text=True,
+        cwd=str(REPO_ROOT),
+        env=env,
+        timeout=60,
+    )
+    from_stdin = subprocess.run(
+        [sys.executable, "-m", "dtt_agent", "--session-id", "demo"],
+        input=scenario.read_text(encoding="utf-8"),
+        capture_output=True,
+        text=True,
+        cwd=str(REPO_ROOT),
+        env=env,
+        timeout=60,
+    )
+
+    assert from_flag.returncode == 0, from_flag.stderr
+    assert from_flag.stdout == from_stdin.stdout
+
+
 def test_cli_survives_malformed_json(tmp_path):
     completed = subprocess.run(
         [sys.executable, "-m", "dtt_agent", "--session-id", "demo"],

@@ -55,10 +55,10 @@ catches most of what we would otherwise have to send back.
       invalid input, and `reset()`.
 - [ ] Every provided scenario runs through the CLI without crashing:
       ```bash
-      for f in scenarios/*.jsonl; do python -m dtt_agent --session-id demo < "$f" > /dev/null; done
+      for f in scenarios/*.jsonl; do python -m dtt_agent --session-id demo --input "$f" > /dev/null; done
       ```
       ```powershell
-      Get-ChildItem scenarios\*.jsonl | ForEach-Object { Get-Content $_ | python -m dtt_agent --session-id demo | Out-Null }
+      Get-ChildItem scenarios\*.jsonl | ForEach-Object { python -m dtt_agent --session-id demo --input $_ | Out-Null }
       ```
 - [ ] Running the same scenario twice produces byte-identical output.
 - [ ] Feeding 100 valid answers terminates promptly and does not grow memory

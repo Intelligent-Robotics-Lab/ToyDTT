@@ -58,16 +58,13 @@ the single development dependency.
 
 ```bash
 python -m pytest                                    # passes on the untouched starter
-python -m dtt_agent --session-id demo < scenarios/mixed_answers.jsonl
+python -m dtt_agent --session-id demo --input scenarios/mixed_answers.jsonl
 ```
 
-**On Windows PowerShell**, `<` is a reserved operator and will not redirect
-input. Pipe the file in instead — the runner behaves identically:
-
-```powershell
-python -m pytest
-Get-Content scenarios\mixed_answers.jsonl | python -m dtt_agent --session-id demo
-```
+These work in any shell, including PowerShell. The runner also reads standard
+input, which is handy for pipelines — `< scenarios/mixed_answers.jsonl` in
+bash or zsh, or `Get-Content scenarios\mixed_answers.jsonl |` in PowerShell,
+which has no `<` redirection.
 
 Both should work **before you write any code**. The starter agent contains no
 teaching logic and no suggested protocol states — it returns structured

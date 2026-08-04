@@ -2,13 +2,19 @@
 
 Usage::
 
+    python -m dtt_agent --session-id demo --input scenarios/mixed_answers.jsonl
+
+    # equivalent, reading standard input
     python -m dtt_agent --session-id demo < scenarios/mixed_answers.jsonl
+
+``--input`` exists because PowerShell has no ``<`` redirection; the two forms
+behave identically everywhere else.
 
 The runner is deliberately thin and protocol-agnostic:
 
 1. construct the agent,
 2. call ``start_session()`` and print its output as one JSON line,
-3. read one JSON object per line from stdin,
+3. read one JSON object per line of input,
 4. call ``process()`` for each one and print one JSON line per input line,
 5. keep reading until EOF -- even after the agent reaches a terminal state, so
    that whatever it does with post-terminal events stays visible,
@@ -38,13 +44,23 @@ def build_parser() -> argparse.ArgumentParser:
         prog="python -m dtt_agent",
         description=(
             "Run one simulated session: start a session, then feed one "
-            "child-answer JSON object per stdin line."
+            "child-answer JSON object per input line."
         ),
     )
     parser.add_argument(
         "--session-id",
         default="demo",
         help="session id passed to start_session() (default: demo)",
+    )
+    parser.add_argument(
+        "--input",
+        metavar="PATH",
+        type=argparse.FileType("r", encoding="utf-8"),
+        default=None,
+        help=(
+            "read events from PATH instead of standard input; '-' also means "
+            "standard input"
+        ),
     )
     return parser
 
@@ -93,7 +109,12 @@ def _invalid_json(agent: DTTAgent, message: str) -> Dict[str, Any]:
 
 def main(argv: Optional[Sequence[str]] = None) -> int:
     args = build_parser().parse_args(argv)
-    run(DTTAgent(), args.session_id, sys.stdin, sys.stdout)
+    stream = args.input or sys.stdin
+    try:
+        run(DTTAgent(), args.session_id, stream, sys.stdout)
+    finally:
+        if stream is not sys.stdin:
+            stream.close()
     return 0
 
 

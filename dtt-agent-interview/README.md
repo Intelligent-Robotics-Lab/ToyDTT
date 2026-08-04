@@ -296,7 +296,7 @@ Your fork or copy of this repository — see the [quick
 start](../README.md#quick-start) in the top-level README — or an archive of it,
 containing:
 
-1. **`RESEARCH.md`** — roughly 800–1,500 words. Start from
+1. **`RESEARCH.md`** — roughly 300–500 words. Start from
    `RESEARCH_TEMPLATE.md`.
 2. **`PROTOCOL.md`** — your operational specification, including the
    source-to-rule traceability table. Start from `PROTOCOL_TEMPLATE.md`.

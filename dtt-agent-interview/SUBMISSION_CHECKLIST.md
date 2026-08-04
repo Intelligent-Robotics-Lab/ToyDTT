@@ -5,7 +5,7 @@ catches most of what we would otherwise have to send back.
 
 ## Documents
 
-- [ ] `RESEARCH.md` exists, roughly 800–1,500 words.
+- [ ] `RESEARCH.md` exists, roughly 300–500 words.
 - [ ] At least three credible sources are cited.
 - [ ] At least two are peer-reviewed, university, government, or recognised
       professional sources.

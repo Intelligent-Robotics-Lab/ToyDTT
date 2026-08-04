@@ -1,6 +1,6 @@
 # RESEARCH.md (template)
 
-Copy this file to `RESEARCH.md` and fill it in. Target roughly **800–1,500
+Copy this file to `RESEARCH.md` and fill it in. Target roughly **300–500
 words**, excluding the reference list. Prose is fine; bullets are fine. Delete
 the guidance text as you go.
 

@@ -281,7 +281,9 @@ what happens to the extra ones is a design decision you should document.
 
 ## 11. What to submit
 
-A Git repository or archive containing:
+Your fork or copy of this repository — see the [quick
+start](../README.md#quick-start) in the top-level README — or an archive of it,
+containing:
 
 1. **`RESEARCH.md`** — roughly 800–1,500 words. Start from
    `RESEARCH_TEMPLATE.md`.

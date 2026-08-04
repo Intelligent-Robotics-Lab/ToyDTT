@@ -18,18 +18,30 @@ This is a simulation exercise. It is not a clinical system and not clinical
 guidance.
 
 ## Quick start
-
+ 
+### 1. Fork the repo
+Click **Fork** in the top right to create your own copy — you'll work from your fork, not the original.
+ 
+### 2. Clone your fork
+ 
 ```bash
-cd dtt-agent-interview
+git clone https://github.com/<your-username>/<repo-name>.git
+cd <repo-name>/dtt-agent-interview
+```
+ 
+### 3. Set up and install
+ 
+```bash
 python -m venv .venv && source .venv/bin/activate   # Windows: .venv\Scripts\activate
 python -m pip install -e ".[dev]"
-
+```
+ 
+### 4. Verify it works
+ 
+```bash
 python -m pytest                                    # passes on the untouched starter
 python -m dtt_agent --session-id demo < scenarios/mixed_answers.jsonl
 ```
-
-Python 3.11 or newer. Runtime code uses the standard library only; `pytest` is
-the single development dependency.
 
 The starter agent contains no teaching logic and no suggested protocol states.
 It returns structured `NOT_IMPLEMENTED` responses, so the runner and the public

@@ -1,0 +1,35 @@
+# ---------------------------------------------------------------------------
+# This repository is shared with applicants. Everything below stays local.
+# ---------------------------------------------------------------------------
+internal/
+docs/
+dist/
+
+# Belt and braces, in case a copy lands elsewhere in the tree
+DTT_AGENT_APPLICANT_ASSIGNMENT.md
+DTT_AGENT_CODEBASE_REQ.md
+GRADING_GUIDE.md
+INTERVIEW_GUIDE.md
+
+# Local tooling and editor state
+.claude/
+.vscode/
+.idea/
+
+# ---------------------------------------------------------------------------
+# Ordinary Python noise
+# ---------------------------------------------------------------------------
+__pycache__/
+*.py[cod]
+*.egg-info/
+.pytest_cache/
+.mypy_cache/
+.ruff_cache/
+.coverage
+htmlcov/
+
+# Environments and build output
+.venv/
+venv/
+env/
+build/

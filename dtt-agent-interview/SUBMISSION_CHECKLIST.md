@@ -1,7 +1,7 @@
 # Submission checklist
 
-Work through this before you send your submission. It takes a few minutes and
-catches most of what we would otherwise have to send back.
+We highly recommend you work through this before you send your submission. It takes a few minutes and
+catches most of what we would look for. Don't seek the perfection. It is completely fine if you are not covering everything and do as much as you can.
 
 ## Documents
 

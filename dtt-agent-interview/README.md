@@ -92,6 +92,13 @@ python -m pytest
 python -m dtt_agent --session-id demo < scenarios/mixed_answers.jsonl
 ```
 
+In **PowerShell**, `<` is a reserved operator and does not redirect input. Pipe
+the scenario in instead — this is equivalent everywhere in this document:
+
+```powershell
+Get-Content scenarios\mixed_answers.jsonl | python -m dtt_agent --session-id demo
+```
+
 Python **3.11 or newer**. Runtime code uses the **standard library only**;
 `pytest` is the one development dependency. The public tests pass against the
 untouched skeleton, so you can verify your setup before writing anything.
@@ -255,6 +262,11 @@ Do not claim the lesson is clinically appropriate for any real child.
 
 ```bash
 python -m dtt_agent --session-id demo < scenarios/mixed_answers.jsonl
+```
+
+```powershell
+# PowerShell equivalent
+Get-Content scenarios\mixed_answers.jsonl | python -m dtt_agent --session-id demo
 ```
 
 The runner constructs the agent, calls `start_session("demo")`, prints that

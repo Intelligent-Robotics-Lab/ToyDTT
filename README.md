@@ -61,6 +61,14 @@ python -m pytest                                    # passes on the untouched st
 python -m dtt_agent --session-id demo < scenarios/mixed_answers.jsonl
 ```
 
+**On Windows PowerShell**, `<` is a reserved operator and will not redirect
+input. Pipe the file in instead — the runner behaves identically:
+
+```powershell
+python -m pytest
+Get-Content scenarios\mixed_answers.jsonl | python -m dtt_agent --session-id demo
+```
+
 Both should work **before you write any code**. The starter agent contains no
 teaching logic and no suggested protocol states — it returns structured
 `NOT_IMPLEMENTED` responses, and the runner prints one JSON line per input line.
